@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang=""><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/favicon.ico"><title>mchavezpe</title><link href="/js/about.0ecfc57b.js" rel="prefetch"><link href="/css/app.50d747d0.css" rel="preload" as="style"><link href="/js/app.b2df60b0.js" rel="preload" as="script"><link href="/js/chunk-vendors.94d1861b.js" rel="preload" as="script"><link href="/css/app.50d747d0.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but mchavezpe doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"></div><div id="chatbot" class="hidden xl:block xl:w-16 xl:h-16 xl:fixed xl:overflow-hidden"><div id="icono" class="h-full w-full overflow-hidden"></div><iframe id="ventana_chat" class="" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/3dfc08c1-5314-4014-bb63-6916b97ce46d"></iframe></div><style>#chatbot {
+      /* position: fixed; */
+      bottom: 60px;
+      right: 20px;
+      /* width: 3rem;
+      height: 3rem; */
+      overflow: hidden;
+
+      transition: all .3s ease-in-out;
+      /* border: 1px solid; */
+    }
+
+
+    #icono::after {
+      content: '';
+      background-image: url('./img/charla.svg');
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+
+    .h--34 {
+      height: 430px !important;
+    }
+
+    .w--32 {
+      width: 350px !important;
+    }</style><script>let btnChat;
+    btnChat = document.getElementById("chatbot");
+    btnChat.addEventListener("click", function () {
+      if (btnChat.classList.contains("h--34")) {
+        btnChat.classList.remove("h--34")
+        btnChat.classList.remove("w--32")
+        document.getElementById("icono").classList.add("block");
+        // btnChat.classList.add("rounded-full");
+
+        document.getElementById("ventana_chat").classList.remove("w-full")
+        document.getElementById("ventana_chat").classList.remove("h-full")
+      } else {
+        document.getElementById("icono").classList.add("hidden");
+        document.getElementById("icono").classList.remove("block");
+        btnChat.classList.add("h--34");
+        btnChat.classList.add("w--32");
+        // btnChat.classList.remove("rounded-full");
+        document.getElementById("ventana_chat").classList.add("w-full")
+        document.getElementById("ventana_chat").classList.add("h-full")
+      }
+    })
+    function close_chat() {
+      // if (btnChat.classList.contains("h--34")) {
+        document.getElementById("icono").classList.remove("hidden");
+      document.getElementById("icono").classList.add("block");
+      btnChat.classList.remove("h--34")
+      btnChat.classList.remove("w--32")
+
+      document.getElementById("ventana_chat").classList.remove("w-full")
+      document.getElementById("ventana_chat").classList.remove("h-full")
+
+    
+
+    }
+    let oEvents = ["keydown"];
+    oEvents.map(event => {
+      window.addEventListener(event, function (oEvent) {
+        if (event == "keydown") {
+          if (oEvent.key == "Escape") {
+            close_chat();
+          }
+        }
+        else {
+          if (btnChat.classList.contains("h--34")) {
+            close_chat();
+          }
+        }
+      })
+    })</script><script src="/js/chunk-vendors.94d1861b.js"></script><script src="/js/app.b2df60b0.js"></script></body></html>
