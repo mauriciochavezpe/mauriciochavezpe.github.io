@@ -29,16 +29,16 @@
                   ><img class="w-4" src="../assets/resources/linkedin.svg"
                 /></a>
               </div>
-              <div class="m-5">
+              <!-- <div class="m-5">
                 <a target="_blank" href="tel:+51944606812"
                   ><img class="w-4" src="../assets/resources/smartphone.svg"
                 /></a>
-              </div>
-               <div class="m-5">
+              </div> -->
+               <!-- <div class="m-5">
                 <a target="_blank" href="mailto:ed.chavez.pe@gmail.com"
                   ><img class="w-4" src="../assets/resources/mail.svg"
                 /></a>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

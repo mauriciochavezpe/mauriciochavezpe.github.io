@@ -11,7 +11,7 @@
         </div>
       </div>
 
-      <div class="w-full  flex justify-center">
+      <!-- <div class="w-full  flex justify-center">
         <div class="w-full m-6  my-3 sm:m-6 xl:w-2/3">
           <img height="h-20" class="shadow-lg rounded-sm" loading="lazy" src="../assets/resources/compensar.png" />
         </div>
@@ -20,7 +20,7 @@
         <div class="w-full m-6 my-3 sm:m-6 xl:w-2/3">
           <img height="h-20" class="shadow-lg rounded-sm" loading="lazy" src="../assets/resources/colsubsidio.png" />
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

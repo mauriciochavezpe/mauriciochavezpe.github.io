@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div class="container mx-auto bg-exp">
     <div class="grid grid-cols-1 xl:grid-cols-3 gap-2">
       <div class="xl:row-span-3">
         <div class="w-full">
@@ -33,6 +33,11 @@ export default {
   data() {
     return {
       empresas: [
+        {
+          nombre: "Everis",
+          cargo: "Consultor TI",
+          duracion: "Ene 2021 - Act.",
+        },
         {
           nombre: "CSTI",
           cargo: "Consultor SCP",
@@ -81,5 +86,11 @@ export default {
   vertical-align: middle;
   display: inline-block;
   margin-left: 1rem;
+}
+.bg-exp{
+  background: url('../assets/resources/bg-exp.png');
+  background-attachment:fixed ;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 </style>

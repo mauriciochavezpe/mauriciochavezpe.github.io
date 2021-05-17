@@ -1,41 +1,29 @@
-
 <template>
   <div class="w-full h-96 bg-gray-200">
+    <!-- MENU DESKTOP -->
     <div
       id="menu"
       class="fixed z-20 h-screen transform -translate-x-full 
-      duration-500 ease-in-out w-screen h-screen bg-red-200"    >
+      duration-500 ease-in-out w-screen h-screen bg-red-200"
+    >
       <div
         class="w-full h-full flex flex-col justify-center align-center uppercase font-medium"
       >
-        <a href="#about" class="text-3xl m-5">Acerca de </a>
-        <a href="#servicios" class="text-3xl m-5">Servicios</a>
-        <a href="#contacto" class="text-3xl m-5">Contacto</a>
-        <a href="#" class="text-3xl m-5">Blog</a>
+        <a href="#about"     @click="burgertoggle" class="text-3xl m-5">Acerca de </a>
+        <a href="#servicios" @click="burgertoggle" class="text-3xl m-5">Servicios</a>
+        <a href="#contacto"  @click="burgertoggle" class="text-3xl m-5">Contacto</a>
+        <a href="#"          @click="burgertoggle" class="text-3xl m-5">Blog</a>
       </div>
     </div>
-
+    <!-- MENU MOBILE -->
     <div class="h-full">
-      <div id="box-btn" class="fixed right-5 mt-5 z-50">
-        <button v-on:click="abrir_menu" class="mx-auto">
-          <svg
-            class="block h-6 w-6"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+      <div id="box-btn" class="fixed mt-3 right-5 z-50 outline-none">
+      <button v-on:click="burgertoggle" id="buttonToggle" class="menu menu--slide outline-none" type="button">
+        <!--SVG-->
+        <span class="menu__inner"></span>
+      </button>
       </div>
-      <!--  -->
+      <!--  MENU ALL-->
       <div class="w-full fixed z-10">
         <div
           id="navbar"
@@ -44,7 +32,7 @@
           <div class="text-left xl:w-4/12">
             <span class="text-3xl">MCHAVEZ.PE</span>
           </div>
-          
+
           <!-- menu option desktop  -->
           <div id="box-menu-opciones" class="flex justify-end">
             <a href="#about" class="text-lg mx-5">Acerca de </a>
@@ -91,7 +79,7 @@ export default {
     };
   },
   methods: {
-    maquina_escribir: function () {
+    maquina_escribir: function() {
       let i = 0;
       let descp_owner = this.info_owner;
       let chartInfo = descp_owner.split("");
@@ -102,7 +90,7 @@ export default {
       }
 
       let writeDescFor = setInterval(
-        function () {
+        function() {
           let nodo = document.getElementById("info_owner");
           if (chartInfo[i] === " ") {
             nodo.innerText += " "; //chartInfo[i];
@@ -115,7 +103,7 @@ export default {
           if (i === chartInfo.length) {
             clearInterval(writeDescFor);
             let writeDescForRever = setInterval(
-              function () {
+              function() {
                 chartInfo = descp_owner.slice(0, i);
                 nodo.innerText = chartInfo;
                 if (i == 0) {
@@ -131,7 +119,7 @@ export default {
         250
       );
     },
-    abrir_menu: function (oEvent) {
+    menuResponsive: function() {
       if (
         document.getElementById("menu").classList.contains("-translate-x-full")
       ) {
@@ -141,19 +129,25 @@ export default {
         document.getElementById("menu").classList.remove("translate-x-full");
         document.getElementById("menu").classList.add("-translate-x-full");
       }
-      console.log("x");
+      // console.log("x");
     },
-    maquina_init: function () {
+    maquina_init: function() {
       this.maquina_escribir();
     },
+    burgertoggle: function() {
+      const menuButtons = document.getElementById("buttonToggle");
+          if(menuButtons){
+            menuButtons.classList.toggle("menu--active");
+            this.menuResponsive()
+          }
+    }
   },
-  created: function () {
+  created: function() {
     this.maquina_init();
-    window.onscroll = function (oEvent) {
-      
+    window.onscroll = function(oEvent) {
       let navbar = document.getElementById("navbar");
       let positionScroll = window.scrollY;
-      
+
       if (positionScroll > 50) {
         navbar.classList.add("bg-gray-300");
       } else {
@@ -186,8 +180,81 @@ export default {
     opacity: 1;
   }
 }
+
 #box-menu-opciones {
   display: none;
+}
+
+.menu {
+  width: 4rem;
+  height: 3.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  
+  text-indent: 5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+.menu__inner,
+.menu__inner:before,
+.menu__inner:after {
+  position: absolute;
+  height: 0.25rem;
+  background-color: #f6f6f6;
+  border-radius: 0.25rem;
+  display: block;
+}
+
+.menu__inner {
+  width: 70%;
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu__inner:before,
+.menu__inner:after {
+  content: "";
+  left: 0;
+  width: 100%;
+}
+
+.menu__inner:before {
+  top: -0.75rem;
+}
+
+.menu__inner:after {
+  top: 0.75rem;
+}
+
+/* Slide */
+.menu--slide .menu__inner,
+.menu--slide .menu__inner:before,
+.menu--slide .menu__inner:after {
+  transition: transform, left, top, 0.16s ease-in-out;
+}
+
+.menu--slide.menu--active .menu__inner {
+  transform: translateX(-4rem);
+}
+
+.menu--slide.menu--active .menu__inner:before {
+  transform: translateX(2rem) rotate(135deg);
+  left: 2rem;
+  top: 0;
+}
+
+.menu--slide.menu--active .menu__inner:after {
+  transform: translateX(2rem) rotate(-135deg);
+  left: 2rem;
+  top: 0;
 }
 
 @media (min-width: 600px) {
